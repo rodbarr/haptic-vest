@@ -1,7 +1,8 @@
 int bLed = 13;
 int gLed = 12;
 int yLed = 11;
-char myCol[20];
+//char myCol[10];
+//char *inint_state = '0';
 
 void setup() {
   // put your setup code here, to run once:
@@ -11,7 +12,7 @@ void setup() {
   pinMode(gLed, OUTPUT);
   pinMode(yLed, OUTPUT);
 
-  //turn of all the leds
+  //turn off all the leds
   digitalWrite(bLed,LOW);
   digitalWrite(gLed,LOW);
   digitalWrite(yLed,LOW);
@@ -19,16 +20,33 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int lf = 10;
-  Serial.readBytesUntil(lf,myCol,1);
-  if(strcmp(myCol, "chest") == 0){
-    digitalWrite(bLed,HIGH);
-    digitalWrite(gLed,HIGH);
-    digitalWrite(yLed,HIGH);
-    delay(500);
-    digitalWrite(bLed,LOW);
-    digitalWrite(gLed,LOW);
-    digitalWrite(yLed,LOW);
+  int lf = 20;
+  char c;
+  //Serial.readBytesUntil(lf,myCol,1);
+  c = Serial.read();
+  if(c){
+    switch(c){
+      case '1':
+        digitalWrite(bLed,HIGH);
+        digitalWrite(gLed,HIGH);
+        digitalWrite(yLed,HIGH);
+        delay(500);
+        break;
+       case '2':
+        digitalWrite(bLed,HIGH);
+        digitalWrite(gLed,LOW);
+        digitalWrite(yLed,LOW);
+        delay(500);
+        break;
+       case '3':
+        digitalWrite(bLed,LOW);
+        digitalWrite(gLed,HIGH);
+        digitalWrite(yLed,LOW);
+        delay(500);
+    }
+    c = '0';
   }
-
+  digitalWrite(bLed,LOW);
+  digitalWrite(gLed,LOW);
+  digitalWrite(yLed,LOW);
 }
