@@ -19,10 +19,8 @@ public class WEAPONRAYCAST : MonoBehaviour
                 raycastedObj = hit.collider.gameObject;
                 if (Input.GetKeyDown("mouse 0"))
                 {
-<<<<<<< HEAD
-                    SerialController.Send("1");
+                    //SerialController.Send("1");
                     Debug.Log("I HAVE INTERACTED WITH AN OBJECT");
-=======
                     Debug.Log("Right Chest");
                 }
             }
@@ -42,7 +40,6 @@ public class WEAPONRAYCAST : MonoBehaviour
                 if (Input.GetKeyDown("mouse 0"))
                 {
                     Debug.Log("Back");
->>>>>>> 496e7fa42776da2cacf6c9c265affd4f431f46a7
                 }
             }
         }
