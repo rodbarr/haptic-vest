@@ -7,6 +7,9 @@ public class WEAPONRAYCAST : MonoBehaviour
     [SerializeField] private int raylenght = 100;
     [SerializeField] private LayerMask layerMaskInteract;
     // Update is called once per frame
+    void Start(){
+        SerialController.Send("1");
+    }
     void Update()
     {
         RaycastHit hit;
@@ -19,8 +22,8 @@ public class WEAPONRAYCAST : MonoBehaviour
                 raycastedObj = hit.collider.gameObject;
                 if (Input.GetKeyDown("mouse 0"))
                 {
-                    //SerialController.Send("1");
-                    Debug.Log("I HAVE INTERACTED WITH AN OBJECT");
+                    SerialController.Send("2"); //Send code to arduino to activate the right part of the vest
+                    //Debug.Log("I HAVE INTERACTED WITH AN OBJECT");
                     Debug.Log("Right Chest");
                 }
             }
@@ -30,15 +33,17 @@ public class WEAPONRAYCAST : MonoBehaviour
 
                 if (Input.GetKeyDown("mouse 0"))
                 {
+                    SerialController.Send("3"); //Send code to arduino to activate the right part of the vest
                     Debug.Log("Left Chest");
                 }
             }
             else if (hit.collider.CompareTag("BACK"))
             {
                 raycastedObj = hit.collider.gameObject;
-
+                
                 if (Input.GetKeyDown("mouse 0"))
                 {
+                    SerialController.Send("4");  //Send code to arduino to activate the right part of the vest
                     Debug.Log("Back");
                 }
             }

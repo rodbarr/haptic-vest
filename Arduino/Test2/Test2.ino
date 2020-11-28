@@ -27,7 +27,6 @@ void loop(){
   if (Serial.available() > 0){
     //Read the code sent from the UI
     code = Serial.read();
-    //Serial.write(code);
     //if code 1 is recived the connection is stablished
     //turn on the 13 pin led to show connnection
     if(code == '1' || conection){

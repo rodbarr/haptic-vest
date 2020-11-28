@@ -22,6 +22,7 @@ public class SerialController : MonoBehaviour
     }
 
     public void Connect(){
+        
        if (sp != null) 
         {
             if (sp.IsOpen) 
@@ -48,7 +49,6 @@ public class SerialController : MonoBehaviour
                 print("Port == null");
             }
         }
-
     }
     public static void Send(string code){
       sp.Write(code);
